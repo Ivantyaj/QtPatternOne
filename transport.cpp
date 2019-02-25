@@ -4,3 +4,8 @@ Transport::Transport()
 {
 
 }
+
+Transport::~Transport()
+{
+
+}

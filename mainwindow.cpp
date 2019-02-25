@@ -12,3 +12,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_pushButtonRead_clicked()
+{
+    Bus bus;
+    ui->tableViewBus->setModel(bus.readCSV());
+}

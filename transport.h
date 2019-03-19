@@ -3,9 +3,11 @@
 
 #include <QStandardItemModel>
 #include <QFile>
+#include <QObject>
 
-class Transport
+class Transport// : public QObject
 {
+   // Q_OBJECT
 public:
     Transport();
     virtual QStandardItemModel * readCSV(QFile *) = 0;

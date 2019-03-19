@@ -28,12 +28,16 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     transport.cpp \
-    bus.cpp
+    busTransport.cpp \
+    bus.cpp \
+    iteratorobject.cpp
 
 HEADERS += \
         mainwindow.h \
     transport.h \
-    bus.h
+    busTransport.h \
+    bus.h \
+    iteratorobject.h
 
 FORMS += \
         mainwindow.ui

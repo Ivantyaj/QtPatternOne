@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<data-set xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<record>
+		<num>1</num>
+		<dateDeparture>02.05.1900</dateDeparture>
+		<dateArrival>02.05.1900</dateArrival>
+		<timeDeparture>00:00</timeDeparture>
+		<timeArrival>00:00</timeArrival>
+		<placeDeparture>Пункт отправления</placeDeparture>
+		<placeArrival>Пункт назначения</placeArrival>
+		<terminalDeparture>Вокзал отправления</terminalDeparture>
+		<terminalArrival>Вокзал прибытия</terminalArrival>
+		<cost>1</cost>
+	</record>
+	<record>
+		<num>1</num>
+		<dateDeparture>02.05.1900</dateDeparture>
+		<dateArrival>02.05.1900</dateArrival>
+		<timeDeparture>00:00</timeDeparture>
+		<timeArrival>00:00</timeArrival>
+		<placeDeparture>Пункт отправления</placeDeparture>
+		<placeArrival>Пункт назначения</placeArrival>
+		<terminalDeparture>Вокзал отправления</terminalDeparture>
+		<terminalArrival>Вокзал прибытия</terminalArrival>
+		<cost>1</cost>
+	</record>
+</data-set>

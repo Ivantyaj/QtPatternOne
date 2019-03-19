@@ -5,7 +5,7 @@ Bus::Bus() : IteratorObject (10)
 
 }
 
-void Bus::setBusFromCsv(const QStringList &stringList)
+void Bus::setBusFromStringList(const QStringList &stringList)
 {
     if(stringList.size() < 10){
         return;
@@ -18,9 +18,9 @@ void Bus::setBusFromCsv(const QStringList &stringList)
     setDateArrival(QDate::fromString(stringList[2], "dd.MM.yyyy"));
     setTimeDeparture(QTime::fromString(stringList[3], "hh:mm"));
     setTimeArrival(QTime::fromString(stringList[4], "hh:mm"));
-    arrivalPlace = stringList[5];
-    terminalDeparture = stringList[6];
-    platform = stringList[7];
+    departurePlace = stringList[5];
+    arrivalPlace = stringList[6];
+    terminalDeparture = stringList[7];
     terminalArrival = stringList[8];
     setCost(stringList[9].toInt());
 }
@@ -87,14 +87,14 @@ QString Bus::getArrivalPlace()
     return arrivalPlace;
 }
 
+QString Bus::getDeparturePlace()
+{
+    return departurePlace;
+}
+
 QString Bus::getTerminalDeparture()
 {
     return terminalDeparture;
-}
-
-QString Bus::getPlatform()
-{
-    return platform;
 }
 
 QString Bus::getTerminalArrival()
@@ -132,16 +132,16 @@ QString Bus::getNext()
         return getTimeArrival();
     case 5:
         iteration++;
-        return getTerminalArrival();
+        return getDeparturePlace();
     case 6:
         iteration++;
-        return getTerminalDeparture();
+        return getArrivalPlace();
     case 7:
         iteration++;
-        return getPlatform();
+        return getTerminalDeparture();
     case 8:
         iteration++;
-        return getArrivalPlace();
+        return getTerminalArrival();
     case 9:
         iteration++;
         return getCost();

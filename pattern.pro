@@ -30,14 +30,18 @@ SOURCES += \
     transport.cpp \
     busTransport.cpp \
     bus.cpp \
-    iteratorobject.cpp
+    iteratorobject.cpp \
+    traintransport.cpp \
+    train.cpp
 
 HEADERS += \
         mainwindow.h \
     transport.h \
     busTransport.h \
     bus.h \
-    iteratorobject.h
+    iteratorobject.h \
+    traintransport.h \
+    train.h
 
 FORMS += \
         mainwindow.ui

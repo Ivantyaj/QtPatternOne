@@ -22,7 +22,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonRead_clicked()
 {
-    ui->tableViewBus->setModel(busTransport.readCSV());
+    if(ui->comboBoxFile->currentText() == "CSV")
+        ui->tableViewBus->setModel(busTransport.readCSV());
+    if(ui->comboBoxFile->currentText() == "XML")
+        ui->tableViewBus->setModel(busTransport.readXML());
 }
 
 void MainWindow::on_pushButtonFilter_clicked()
@@ -31,18 +34,38 @@ void MainWindow::on_pushButtonFilter_clicked()
     QString dateTo =ui->dateEditTo->text();
     QString timeFrom = ui->timeEditFrom->text();
     QString timeTo = ui->timeEditTo->text();
-
-    Bus bus = busTransport.getBusList()->at(0);
-    qDebug() << "arrival " << bus.getDateArrival();
+    QString placeFrom = ui->lineEditFrom->text();
+    QString placeTo = ui->lineEditTo->text();
 
     QList<Bus> busList;
     if(dateFrom != emptyDate && dateTo != emptyDate){
         busTransport.filter(busTransport.getBusList(),&busList,BusTransport::FilterType::Date, dateFrom, dateTo);
         auto model = BusTransport::getModel(&busList, busTransport.getHeaders());
-
-        //auto model = BusTransport::getModel(busTransport.getBusList(), busTransport.getHeaders());
-
         ui->tableViewBus->setModel(model);
     }
+    if(timeFrom != emptyTime && timeTo != emptyTime){
+        busTransport.filter(busTransport.getBusList(),&busList,BusTransport::FilterType::Time, timeFrom, timeTo);
+        auto model = BusTransport::getModel(&busList, busTransport.getHeaders());
+        ui->tableViewBus->setModel(model);
+    }
+    if(placeFrom != "" || placeTo != ""){
+        busTransport.filter(busTransport.getBusList(),&busList,BusTransport::FilterType::Destination, placeFrom, placeTo);
+        auto model = BusTransport::getModel(&busList, busTransport.getHeaders());
+        ui->tableViewBus->setModel(model);
+    }
+
+}
+
+void MainWindow::on_pushButtonClosest_clicked()
+{
+    QList<Bus> busList;
+
+    QDate currentFrom = QDate::currentDate();
+    QDate currentTo = QDate::currentDate().addMonths(2);
+
+    busTransport.filter(busTransport.getBusList(),&busList,BusTransport::FilterType::Closest,
+                        currentFrom.toString("dd.MM.yyyy"), currentTo.toString("dd.MM.yyyy"));
+    auto model = BusTransport::getModel(&busList, busTransport.getHeaders());
+    ui->tableViewBus->setModel(model);
 
 }

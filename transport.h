@@ -11,6 +11,7 @@ class Transport// : public QObject
 public:
     Transport();
     virtual QStandardItemModel * readCSV(QFile *) = 0;
+    virtual QStandardItemModel * readXML(QFile *) = 0;
     virtual ~Transport();
 };
 

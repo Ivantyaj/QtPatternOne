@@ -112,7 +112,7 @@
       <hour>0</hour>
       <minute>0</minute>
       <second>0</second>
-      <year>1900</year>
+      <year>2000</year>
       <month>1</month>
       <day>1</day>
      </datetime>
@@ -135,7 +135,7 @@
       <hour>0</hour>
       <minute>0</minute>
       <second>0</second>
-      <year>2001</year>
+      <year>2000</year>
       <month>1</month>
       <day>1</day>
      </datetime>
@@ -153,6 +153,9 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="displayFormat">
+     <string>HH:mm</string>
+    </property>
    </widget>
    <widget class="QTimeEdit" name="timeEditTo">
     <property name="geometry">
@@ -162,6 +165,9 @@
       <width>118</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="displayFormat">
+     <string>HH:mm</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEditFrom">

@@ -23,9 +23,12 @@ private slots:
 
     void on_pushButtonFilter_clicked();
 
+    void on_pushButtonClosest_clicked();
+
 private:
     BusTransport busTransport;
     const QString emptyDate = "01.01.2000";
+    const QString emptyTime = "00:00";
 
     Ui::MainWindow *ui;
 

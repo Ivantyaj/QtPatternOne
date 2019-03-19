@@ -19,21 +19,15 @@ private:
     QTime timeDeparture;
     QTime timeArrival;
     QString arrivalPlace;
+    QString departurePlace;
     QString terminalDeparture;
-    QString platform;
     QString terminalArrival;
     int cost;
 
-
-//    void signalTimeDepartureChanged(QTime);
-//    void signalDateDepartureChanged(QDate);
-//    void signalTimeArrivalChanged(QTime);
-//    void signalDateArrivalChanged(QDate);
 public:
     Bus();
-    //virtual ~Bus() {}
 
-    void setBusFromCsv(const QStringList & string);
+    void setBusFromStringList(const QStringList & string);
 
 //Setters
     void setNum(const int);
@@ -51,8 +45,8 @@ public:
     QString getTimeDeparture();
     QString getTimeArrival();
     QString getArrivalPlace();
+    QString getDeparturePlace();
     QString getTerminalDeparture();
-    QString getPlatform();
     QString getTerminalArrival();
     QString getCost();
 

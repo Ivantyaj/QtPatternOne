@@ -1,21 +1,23 @@
-#ifndef BUSTRANSPORT_H
-#define BUSTRANSPORT_H
+#ifndef TRAINTRANSPORT_H
+#define TRAINTRANSPORT_H
+
 #include "transportfactory.h"
 #include <QTextStream>
 #include <QList>
 #include <QXmlStreamReader>
-#include "bus.h"
+#include <train.h>
 
-class BusTransport : public TransportFactory
+class TrainTransport: public TransportFactory
 {
 public:
 
 private:
-    QList<Bus> busList;
-    QList<Bus> busListFiltered;
+    QList<Train> trainList;
+    QList<Train> trainListFiltered;
     QStringList headers;
+
 public:
-    BusTransport();
+    TrainTransport();
 
     QStandardItemModel * readCSV(QFile *file = nullptr);
     QStandardItemModel * readXML(QFile *file = nullptr);
@@ -25,9 +27,9 @@ public:
     void resetFilter();
 
 private:
-    void addBus(const QStringList &bus);
-    QList<Bus> * getBusList();
+    void addTrain(const QStringList &train);
+    QList<Train> * getTrainList();
     QStringList * getHeaders();
 };
 
-#endif // BUSTRANSPORT_H
+#endif // TRAINTRANSPORT_H

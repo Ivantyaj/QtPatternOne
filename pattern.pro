@@ -27,21 +27,23 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    transport.cpp \
     busTransport.cpp \
     bus.cpp \
     iteratorobject.cpp \
     traintransport.cpp \
-    train.cpp
+    train.cpp \
+    transportfactory.cpp \
+    transport.cpp
 
 HEADERS += \
         mainwindow.h \
-    transport.h \
     busTransport.h \
     bus.h \
     iteratorobject.h \
     traintransport.h \
-    train.h
+    train.h \
+    transportfactory.h \
+    transport.h
 
 FORMS += \
         mainwindow.ui

@@ -8,8 +8,9 @@
 #include <QDebug>
 
 #include "iteratorobject.h"
+#include "transport.h"
 
-class Bus : public IteratorObject
+class Bus : public IteratorObject//, public Transport
 {
 
 private:
@@ -27,7 +28,7 @@ private:
 public:
     Bus();
 
-    void setBusFromStringList(const QStringList & string);
+    void setFromStringList(const QStringList & string);
 
 //Setters
     void setNum(const int);

@@ -1,18 +1,14 @@
 #ifndef TRANSPORT_H
 #define TRANSPORT_H
 
-#include <QStandardItemModel>
-#include <QFile>
-#include <QObject>
+#include <QStringList>
 
-class Transport// : public QObject
+class Transport
 {
-   // Q_OBJECT
 public:
     Transport();
-    virtual QStandardItemModel * readCSV(QFile *) = 0;
-    virtual QStandardItemModel * readXML(QFile *) = 0;
-    virtual ~Transport();
+    virtual void setFromStringList(const QStringList & string) = 0;
+    virtual ~Transport() = 0;
 };
 
 #endif // TRANSPORT_H

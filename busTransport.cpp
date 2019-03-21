@@ -9,6 +9,8 @@ BusTransport::BusTransport()
 
 QStandardItemModel *BusTransport::readCSV(QFile *file)
 {
+    busList.clear();
+    busListFiltered.clear();
     //TODO
     file = new QFile();
     file->setFileName("E:\\Projects\\Qt\\pattern\\bus.csv");
@@ -46,11 +48,15 @@ QStandardItemModel *BusTransport::readCSV(QFile *file)
     }
     file->close();
 
+    busListFiltered = busList;
+
     return model;
 }
 
 QStandardItemModel *BusTransport::readXML(QFile *file)
 {
+    busList.clear();
+    busListFiltered.clear();
     file = new QFile();
     file->setFileName("E:\\Projects\\Qt\\pattern\\BusS.xml");
     QStringList stringList;
@@ -92,6 +98,8 @@ QStandardItemModel *BusTransport::readXML(QFile *file)
             }
 
         }
+        busListFiltered = busList;
+
         return model;
     }
 }
@@ -99,7 +107,7 @@ QStandardItemModel *BusTransport::readXML(QFile *file)
 void BusTransport::addBus(const QStringList &busStringList)
 {
     Bus bus;
-    bus.setBusFromStringList(busStringList);
+    bus.setFromStringList(busStringList);
     busList.append(bus);
 }
 
@@ -113,82 +121,79 @@ QStringList *BusTransport::getHeaders()
     return &headers;
 }
 
-void BusTransport::filter(const QList<Bus> * sourceList, QList<Bus> *filterList, BusTransport::FilterType type, const QString &from, const QString &to)
+void BusTransport::filter(TransportFactory::FilterType type, const QString &from, const QString &to)
 {
-    filterList->clear();
+    busListFiltered.clear();
     switch(type){
-    case BusTransport::FilterType::Date:
+    case TransportFactory::FilterType::Date:
 
-        for(Bus bus : *sourceList){
+        for(Bus bus : busList){
 
             if(QDate::fromString(bus.getDateDeparture(), "dd.MM.yyyy") >= QDate::fromString(from, "dd.MM.yyyy")
                     && QDate::fromString(bus.getDateArrival(), "dd.MM.yyyy") <= QDate::fromString(to, "dd.MM.yyyy")){
-                filterList->append(bus);
+                busListFiltered.append(bus);
             }
         }
         break;
-    case BusTransport::FilterType::Time:
-        for(Bus bus : *sourceList){
+    case TransportFactory::FilterType::Time:
+        for(Bus bus : busList){
             qDebug() << from << " to " << to;
             qDebug() << QTime::fromString(bus.getTimeDeparture(), "hh:mm") << "  " << QTime::fromString(from, "hh:mm");
             if(QTime::fromString(bus.getTimeDeparture(), "hh:mm") >= QTime::fromString(from, "hh:mm")
                     && QTime::fromString(bus.getTimeArrival(), "hh:mm") <= QTime::fromString(to, "hh:mm")){
-                filterList->append(bus);
+                busListFiltered.append(bus);
             }
         }
         break;
-    case BusTransport::FilterType::Destination:
+    case TransportFactory::FilterType::Destination:
         if(from == "" && to == ""){
-            filterList = nullptr;
+            busListFiltered.clear();
             return;
         }
         if(from != "" && to != ""){
-            for(Bus bus: *sourceList){
+            for(Bus bus: busList){
                 if(bus.getDeparturePlace() == from && bus.getArrivalPlace() == to){
-                    filterList->append(bus);
+                    busListFiltered.append(bus);
                 }
             }
             return;
         }
         if (from != "") {
-            for(Bus bus: *sourceList){
+            for(Bus bus: busList){
                 if(bus.getDeparturePlace() == from){
-                    filterList->append(bus);
+                    busListFiltered.append(bus);
                 }
             }
             return;
         }
         if (to != ""){
-            for(Bus bus: *sourceList){
+            for(Bus bus: busList){
                 if(bus.getArrivalPlace() == to){
-                    filterList->append(bus);
+                    busListFiltered.append(bus);
                 }
             }
         }
 
         break;
-    case BusTransport::FilterType::Closest:
-        for(Bus bus : *sourceList){
+    case TransportFactory::FilterType::Closest:
+        for(Bus bus : busList){
 
             if(QDate::fromString(bus.getDateDeparture(), "dd.MM.yyyy") >= QDate::fromString(from, "dd.MM.yyyy")
                     && QDate::fromString(bus.getDateDeparture(), "dd.MM.yyyy") <= QDate::fromString(to, "dd.MM.yyyy")){
-                filterList->append(bus);
+                busListFiltered.append(bus);
             }
         }
         break;
     }
 }
 
-QStandardItemModel *BusTransport::getModel(QList<Bus> * busSource, QStringList *headers)
+QStandardItemModel *BusTransport::getModel()
 {
-    if(!busSource){
-        return nullptr;
-    }
     QStandardItemModel * model = new QStandardItemModel();
-    model->setColumnCount(9);
-    model->setHorizontalHeaderLabels(*headers);
+    model->setColumnCount(10);
+    model->setHorizontalHeaderLabels(headers);
 
-    for(Bus bus: *busSource){
+    for(Bus bus: busListFiltered){
         QList<QStandardItem *> stdItemList;
         bus.initIteration();
         while(bus.isEnd()){
@@ -199,4 +204,9 @@ QStandardItemModel *BusTransport::getModel(QList<Bus> * busSource, QStringList *
     }
 
     return model;
+}
+
+void BusTransport::resetFilter()
+{
+    busListFiltered = busList;
 }

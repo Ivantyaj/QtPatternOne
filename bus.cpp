@@ -5,7 +5,7 @@ Bus::Bus() : IteratorObject (10)
 
 }
 
-void Bus::setBusFromStringList(const QStringList &stringList)
+void Bus::setFromStringList(const QStringList &stringList)
 {
     if(stringList.size() < 10){
         return;

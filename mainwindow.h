@@ -2,8 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "bus.h"
 #include "busTransport.h"
+#include "traintransport.h"
+#include "transportfactory.h"
 
 
 namespace Ui {
@@ -20,20 +21,17 @@ public:
 
 private slots:
     void on_pushButtonRead_clicked();
-
     void on_pushButtonFilter_clicked();
-
     void on_pushButtonClosest_clicked();
 
 private:
-    BusTransport busTransport;
     const QString emptyDate = "01.01.2000";
     const QString emptyTime = "00:00";
 
     Ui::MainWindow *ui;
 
     //Bus bus;
-    Transport * transport;
+    TransportFactory * transportFactory;
 };
 
 #endif // MAINWINDOW_H

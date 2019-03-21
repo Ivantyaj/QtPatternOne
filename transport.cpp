@@ -4,8 +4,3 @@ Transport::Transport()
 {
 
 }
-
-Transport::~Transport()
-{
-
-}

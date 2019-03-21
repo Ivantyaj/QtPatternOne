@@ -2,6 +2,12 @@
 #include <QtDebug>
 
 
+BusTransport &BusTransport::getInstance()
+{
+    static BusTransport instance;
+    return instance;
+}
+
 BusTransport::BusTransport()
 {
 

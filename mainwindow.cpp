@@ -19,7 +19,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButtonRead_clicked()
 {
     if(ui->tabWidget->currentWidget() == ui->tabBus){
-        transportFactory = new BusTransport();
+        //transportFactory = new BusTransport();
+        transportFactory = &BusTransport::getInstance();
         if(ui->comboBoxFile->currentText() == "CSV")
             ui->tableViewBus->setModel(transportFactory->readCSV());
         if(ui->comboBoxFile->currentText() == "XML")

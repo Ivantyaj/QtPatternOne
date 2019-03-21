@@ -9,13 +9,16 @@
 class BusTransport : public TransportFactory
 {
 public:
-
+    static BusTransport & getInstance();
+private:
+    BusTransport();
+    BusTransport(const BusTransport &);
+    BusTransport& operator=(BusTransport &);
 private:
     QList<Bus> busList;
     QList<Bus> busListFiltered;
     QStringList headers;
 public:
-    BusTransport();
 
     QStandardItemModel * readCSV(QFile *file = nullptr);
     QStandardItemModel * readXML(QFile *file = nullptr);

@@ -17,7 +17,7 @@ QStandardItemModel *BusTransport::readCSV(QFile *file)
 {
     busList.clear();
     busListFiltered.clear();
-
+    //TODO
     file = new QFile();
     file->setFileName("E:\\Projects\\Qt\\pattern\\bus.csv");
     file->open(QFile::ReadOnly | QFile::Text);
@@ -62,6 +62,7 @@ QStandardItemModel *BusTransport::readXML(QFile *file)
 {
     busList.clear();
     busListFiltered.clear();
+    //TODO
     file = new QFile();
     file->setFileName("E:\\Projects\\Qt\\pattern\\BusS.xml");
     QStringList stringList;
@@ -70,15 +71,15 @@ QStandardItemModel *BusTransport::readXML(QFile *file)
         return nullptr;
     } else {
         qDebug() << "XML reader";
-        /* Создаем объект, с помощью которого осуществляется чтение из файла */
+
         QXmlStreamReader xmlReader;
         xmlReader.setDevice(file);
-        //xmlReader.readNext();   // Переходит к первому элементу в файле
+
         QStandardItemModel * model = new QStandardItemModel();
         model->setColumnCount(10);
         while(!xmlReader.atEnd())
         {
-            //qDebug() << "XML reader first";
+
             QXmlStreamReader::TokenType token = xmlReader.readNext();
             if (token == QXmlStreamReader::StartElement && xmlReader.name() == "record") {
                 token = xmlReader.readNext();
@@ -86,20 +87,17 @@ QStandardItemModel *BusTransport::readXML(QFile *file)
                 QList<QStandardItem *> stdItemList;
                 while(token != QXmlStreamReader::EndElement && xmlReader.name() != "record"){
                     xmlReader.readNext();
-                    //qDebug() << xmlReader.name() << xmlReader.readElementText();
+
                     QString element = xmlReader.readElementText();
                     if(element != "" && xmlReader.name() != "record"){
                         stringListBus << element;
                         stdItemList.append(new QStandardItem(element));
-                        //qDebug() << stringListBus;
+
                     }
                 }
                 addBus(stringListBus);
 
                 model->insertRow(model->rowCount(),stdItemList);
-
-                //qDebug() << stdItemList;
-                //qDebug() << "-----------";
             }
 
         }

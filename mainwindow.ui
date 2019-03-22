@@ -51,7 +51,7 @@
     <property name="geometry">
      <rect>
       <x>60</x>
-      <y>220</y>
+      <y>250</y>
       <width>1001</width>
       <height>331</height>
      </rect>
@@ -105,6 +105,12 @@
         <width>821</width>
         <height>231</height>
        </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
       </property>
      </widget>
      <widget class="QListWidget" name="listWidgetTrain">
@@ -296,7 +302,7 @@
       <x>810</x>
       <y>10</y>
       <width>281</width>
-      <height>211</height>
+      <height>241</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
@@ -305,7 +311,7 @@
     <property name="geometry">
      <rect>
       <x>810</x>
-      <y>570</y>
+      <y>590</y>
       <width>161</width>
       <height>41</height>
      </rect>
@@ -318,7 +324,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>570</y>
+      <y>590</y>
       <width>151</width>
       <height>41</height>
      </rect>

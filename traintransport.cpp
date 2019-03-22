@@ -61,6 +61,7 @@ QStandardItemModel *TrainTransport::readXML(QFile *file)
 {
     trainList.clear();
     trainListFiltered.clear();
+    //TODO
     file = new QFile();
     file->setFileName("E:\\Projects\\Qt\\pattern\\TrainS.xml");
     QStringList stringList;

@@ -9,8 +9,3 @@ bool IteratorObject::isEnd()
 {
     return fieldCount > iteration ? true : false;
 }
-
-//IteratorObject::~IteratorObject()
-//{
-
-//}

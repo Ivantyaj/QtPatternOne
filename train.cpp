@@ -11,8 +11,6 @@ void Train::setFromStringList(const QStringList &stringList)
         return;
     }
 
-    //qDebug() << "list " << stringList;
-    //qDebug() << "time " << stringList[3] << " sd " <<QTime::fromString(stringList[3], "hh:mm");
     setNum(stringList[0]);
     setDateDeparture(QDate::fromString(stringList[1], "dd.MM.yyyy"));
     setDateArrival(QDate::fromString(stringList[2], "dd.MM.yyyy"));
@@ -33,25 +31,21 @@ void Train::setNum(const QString num)
 void Train::setTimeDeparture(const QTime & time)
 {
     timeDeparture = time;
-    //emit signalTimeDepartureChanged(time);
 }
 
 void Train::setDateDeparture(const QDate &date)
 {
     dateDeparture = date;
-    //emit signalDateDepartureChanged(date);
 }
 
 void Train::setTimeArrival(const QTime & time)
 {
     timeArrival = time;
-    //emit signalTimeArrivalChanged(time);
 }
 
 void Train::setDateArrival(const QDate & date)
 {
     dateArrival = date;
-    //emit signalDateArrivalChanged(date);
 }
 
 void Train::setCost(const int cost)

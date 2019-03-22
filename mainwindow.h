@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtCharts>
 #include "busTransport.h"
 #include "traintransport.h"
 #include "transportfactory.h"
@@ -25,12 +26,15 @@ private slots:
     void on_pushButtonClosest_clicked();
 
 private:
+    void reloadChart();
+
+private:
     const QString emptyDate = "01.01.2000";
     const QString emptyTime = "00:00";
 
     Ui::MainWindow *ui;
+    QChartView *chartView;
 
-    //Bus bus;
     TransportFactory * transportFactory;
 };
 

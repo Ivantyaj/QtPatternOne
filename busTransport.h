@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <QList>
 #include <QXmlStreamReader>
+#include <QtCharts>
 #include "bus.h"
 
 class BusTransport : public TransportFactory

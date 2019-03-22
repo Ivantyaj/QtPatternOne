@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1122</width>
-    <height>791</height>
+    <height>632</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -91,6 +91,16 @@
      <attribute name="title">
       <string>Поезд</string>
      </attribute>
+     <widget class="QTableView" name="tableViewTrain">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>31</y>
+        <width>681</width>
+        <height>221</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabPlane">
      <attribute name="title">
@@ -268,6 +278,17 @@
     <property name="text">
      <string>Прибытие</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>10</y>
+      <width>241</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout"/>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

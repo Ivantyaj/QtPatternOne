@@ -9,9 +9,8 @@
 #include <QDebug>
 
 #include "iteratorobject.h"
-#include "transport.h"
 
-class Train : public IteratorObject//, public Transport
+class Train : public IteratorObject
 {
 
 private:

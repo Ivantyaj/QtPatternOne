@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1122</width>
-    <height>632</height>
+    <height>714</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -66,22 +66,28 @@
      <attribute name="title">
       <string>Автобус</string>
      </attribute>
-     <widget class="QListView" name="listViewBus">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>201</width>
-        <height>231</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QTableView" name="tableViewBus">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>150</x>
         <y>20</y>
-        <width>621</width>
+        <width>821</width>
+        <height>231</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <property name="selectionBehavior">
+       <enum>QAbstractItemView::SelectRows</enum>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidgetBus">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>91</width>
         <height>231</height>
        </rect>
       </property>
@@ -94,18 +100,23 @@
      <widget class="QTableView" name="tableViewTrain">
       <property name="geometry">
        <rect>
-        <x>170</x>
-        <y>31</y>
-        <width>681</width>
-        <height>221</height>
+        <x>150</x>
+        <y>20</y>
+        <width>821</width>
+        <height>231</height>
        </rect>
       </property>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tabPlane">
-     <attribute name="title">
-      <string>Самолет</string>
-     </attribute>
+     <widget class="QListWidget" name="listWidgetTrain">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>91</width>
+        <height>231</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QDateEdit" name="dateEditFrom">
@@ -216,7 +227,7 @@
    <widget class="QPushButton" name="pushButtonClosest">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>640</x>
       <y>130</y>
       <width>111</width>
       <height>61</height>
@@ -282,13 +293,39 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>850</x>
+      <x>810</x>
       <y>10</y>
-      <width>241</width>
+      <width>281</width>
       <height>211</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
+   <widget class="QPushButton" name="pushButtonFavorite">
+    <property name="geometry">
+     <rect>
+      <x>810</x>
+      <y>570</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>В избранное</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButtonClearFavorite">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>570</y>
+      <width>151</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Очистить</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">

@@ -1,17 +1,17 @@
-#include "bus.h"
+#include "train.h"
 
-Bus::Bus() : IteratorObject (10)
+Train::Train() : IteratorObject (10)
 {
 
 }
 
-void Bus::setFromStringList(const QStringList &stringList)
+void Train::setFromStringList(const QStringList &stringList)
 {
     if(stringList.size() < 10){
         return;
     }
 
-    setNum(stringList[0].toInt());
+    setNum(stringList[0]);
     setDateDeparture(QDate::fromString(stringList[1], "dd.MM.yyyy"));
     setDateArrival(QDate::fromString(stringList[2], "dd.MM.yyyy"));
     setTimeDeparture(QTime::fromString(stringList[3], "hh:mm"));
@@ -23,90 +23,89 @@ void Bus::setFromStringList(const QStringList &stringList)
     setCost(stringList[9].toInt());
 }
 
-void Bus::setNum(const int num)
+void Train::setNum(const QString num)
 {
     this->num = num;
-    qDebug() << "setNum " << this->num;
 }
 
-void Bus::setTimeDeparture(const QTime & time)
+void Train::setTimeDeparture(const QTime & time)
 {
     timeDeparture = time;
 }
 
-void Bus::setDateDeparture(const QDate &date)
+void Train::setDateDeparture(const QDate &date)
 {
     dateDeparture = date;
 }
 
-void Bus::setTimeArrival(const QTime & time)
+void Train::setTimeArrival(const QTime & time)
 {
     timeArrival = time;
 }
 
-void Bus::setDateArrival(const QDate & date)
+void Train::setDateArrival(const QDate & date)
 {
     dateArrival = date;
 }
 
-void Bus::setCost(const int cost)
+void Train::setCost(const int cost)
 {
     this->cost = cost;
 }
 
-QString Bus::getNum()
+QString Train::getNum()
 {
-    return QString::number(num);
+    return num;
 }
 
-QString Bus::getTimeDeparture()
+QString Train::getTimeDeparture()
 {
     return timeDeparture.toString("hh:mm");
 }
 
-QString Bus::getDateDeparture()
+QString Train::getDateDeparture()
 {
     return dateDeparture.toString("dd.MM.yyyy");
 }
 
-QString Bus::getTimeArrival()
+QString Train::getTimeArrival()
 {
     qDebug() << "time " << timeArrival;
     qDebug() << timeArrival.toString("hh:mm");
     return timeArrival.toString("hh:mm");
 }
 
-QString Bus::getArrivalPlace()
+QString Train::getArrivalPlace()
 {
     return arrivalPlace;
 }
 
-QString Bus::getDeparturePlace()
+QString Train::getDeparturePlace()
 {
     return departurePlace;
 }
 
-QString Bus::getTerminalDeparture()
+QString Train::getTerminalDeparture()
 {
     return terminalDeparture;
 }
 
-QString Bus::getTerminalArrival()
+QString Train::getTerminalArrival()
 {
     return terminalArrival;
 }
 
-QString Bus::getCost()
+QString Train::getCost()
 {
     return QString::number(cost);
 }
 
-QString Bus::getDateArrival()
+QString Train::getDateArrival()
 {
     return dateArrival.toString("dd.MM.yyyy");
 }
 
-QString Bus::getNext()
+QString Train::getNext()
 {
     switch(iteration){
     case 0:
@@ -145,7 +144,7 @@ QString Bus::getNext()
 
 }
 
-void Bus::initIteration()
+void Train::initIteration()
 {
     iteration = 0;
 }

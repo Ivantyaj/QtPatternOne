@@ -5,12 +5,10 @@
 #include <QFile>
 #include <QObject>
 #include <QList>
-#include "transport.h"
 
-
-class TransportFactory// : public QObject
+class TransportFactory
 {
-   // Q_OBJECT
+
 public:
     enum FilterType {
         Date,

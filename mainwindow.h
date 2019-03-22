@@ -25,6 +25,12 @@ private slots:
     void on_pushButtonFilter_clicked();
     void on_pushButtonClosest_clicked();
 
+    void on_pushButtonFavorite_clicked();
+
+    void on_pushButtonClearFavorite_clicked();
+
+    void on_tabWidget_currentChanged(int index);
+
 private:
     void reloadChart();
 

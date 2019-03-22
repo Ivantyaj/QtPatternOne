@@ -8,9 +8,8 @@
 #include <QDebug>
 
 #include "iteratorobject.h"
-#include "transport.h"
 
-class Bus : public IteratorObject//, public Transport
+class Bus : public IteratorObject
 {
 
 private:

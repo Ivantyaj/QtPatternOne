@@ -32,8 +32,7 @@ SOURCES += \
     iteratorobject.cpp \
     traintransport.cpp \
     train.cpp \
-    transportfactory.cpp \
-    transport.cpp
+    transportfactory.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,8 +41,7 @@ HEADERS += \
     iteratorobject.h \
     traintransport.h \
     train.h \
-    transportfactory.h \
-    transport.h
+    transportfactory.h
 
 FORMS += \
         mainwindow.ui

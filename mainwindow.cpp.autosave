@@ -25,23 +25,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButtonRead_clicked()
 {
-//    if(ui->tabWidget->currentWidget() == ui->tabBus){
-//        ui->listWidgetBus->clear();
-//        transportFactory = &BusTransport::getInstance();
-//        if(ui->comboBoxFile->currentText() == "CSV")
-//            ui->tableViewBus->setModel(transportFactory->readCSV());
-//        if(ui->comboBoxFile->currentText() == "XML")
-//            ui->tableViewBus->setModel(transportFactory->readXML());
-//    }
-//    if(ui->tabWidget->currentWidget() == ui->tabTrain){
-//        transportFactory = &TrainTransport::getInstance();
-//        if(ui->comboBoxFile->currentText() == "CSV")
-//            ui->tableViewBus->setModel(transportFactory->readCSV());
-//        if(ui->comboBoxFile->currentText() == "XML")
-//            ui->tableViewBus->setModel(transportFactory->readXML());
-//    }
 
-    //transportFactory = &TrainTransport::getInstance();
     if(ui->tabWidget->currentWidget() == ui->tabBus){
         if(ui->comboBoxFile->currentText() == "CSV")
             ui->tableViewBus->setModel(transportFactory->readCSV());
@@ -55,11 +39,6 @@ void MainWindow::on_pushButtonRead_clicked()
             ui->tableViewTrain->setModel(transportFactory->readXML());
     }
 
-//    if(ui->comboBoxFile->currentText() == "CSV")
-//        ui->tableViewBus->setModel(transportFactory->readCSV());
-//    if(ui->comboBoxFile->currentText() == "XML")
-//        ui->tableViewBus->setModel(transportFactory->readXML());
-
     reloadChart();
 }
 
@@ -71,13 +50,6 @@ void MainWindow::on_pushButtonFilter_clicked()
     QString timeTo = ui->timeEditTo->text();
     QString placeFrom = ui->lineEditFrom->text();
     QString placeTo = ui->lineEditTo->text();
-
-//    if(ui->tabWidget->currentWidget() == ui->tabBus){
-//        transportFactory = &BusTransport::getInstance();
-//    }
-//    if(ui->tabWidget->currentWidget() == ui->tabTrain){
-//        transportFactory = &TrainTransport::getInstance();
-//    }
 
     transportFactory->resetFilter();
     if(dateFrom != emptyDate && dateTo != emptyDate){
@@ -101,9 +73,6 @@ void MainWindow::on_pushButtonFilter_clicked()
 
 void MainWindow::on_pushButtonClosest_clicked()
 {
-//    if(!transportFactory)
-//        return;
-
     QDate currentFrom = QDate::currentDate();
     QDate currentTo = QDate::currentDate().addMonths(2);
 
@@ -111,7 +80,6 @@ void MainWindow::on_pushButtonClosest_clicked()
                              currentFrom.toString("dd.MM.yyyy"), currentTo.toString("dd.MM.yyyy"));
     auto model = transportFactory->getModel();
     ui->tableViewBus->setModel(model);
-
 }
 
 void MainWindow::reloadChart()
@@ -135,7 +103,6 @@ void MainWindow::reloadChart()
     series->append("Bus", busCount);
     series->append("Train", trainCount);
 
-
     QPieSlice *slice = series->slices().at(0);
     slice->setExploded();
     slice->setLabelVisible();
@@ -151,7 +118,6 @@ void MainWindow::reloadChart()
     chart->setTitle("Количество транспорта");
     chart->legend()->hide();
 
-    //chartView = new QChartView(chart);
     chartView->setChart(chart);
 }
 
@@ -177,7 +143,6 @@ void MainWindow::on_pushButtonClearFavorite_clicked()
     if(ui->tabWidget->currentWidget() == ui->tabTrain){
         ui->listWidgetTrain->clear();
     }
-    //ui->listWidgetBus->clear();
 }
 
 void MainWindow::on_tabWidget_currentChanged(int index)
